@@ -19,7 +19,6 @@ public class RouteStatusController : ControllerBase {
 
     [HttpGet]
     public ServerStatus Get() {
-        _logger.LogDebug("Get server status");
         return new ServerStatus(Status: "pass", ServiceId: Guid.NewGuid(),
             Version: Assembly.GetExecutingAssembly().GetName().Version ?? new Version(),
             Checks: new Dictionary<string, ConnectionStatus>() {

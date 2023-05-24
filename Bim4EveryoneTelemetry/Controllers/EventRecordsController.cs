@@ -18,7 +18,6 @@ public class EventRecordsController : ControllerBase {
 
     [HttpPost]
     public Task Post(EventRecord eventRecord) {
-        _logger.LogDebug("Post event telemetry record {ScriptTelemetryRecord}", eventRecord);
         return _eventRepository.Create(eventRecord);
     }
 }

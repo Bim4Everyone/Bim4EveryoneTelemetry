@@ -20,7 +20,6 @@ public class ScriptRecordsController : ControllerBase {
 
     [HttpPost]
     public Task Post(ScriptRecord scriptRecord) {
-        _logger.LogDebug("Post script telemetry record {ScriptTelemetryRecord}", scriptRecord);
         return _scriptRepository.Create(scriptRecord);
     }
 }
