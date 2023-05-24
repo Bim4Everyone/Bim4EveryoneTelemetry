@@ -18,6 +18,6 @@ public class EventRecordsController : ControllerBase {
 
     [HttpPost]
     public Task Post(EventRecord eventRecord) {
-        return _eventRepository.Create(eventRecord);
+        return _eventRepository.CreateAsync(eventRecord);
     }
 }

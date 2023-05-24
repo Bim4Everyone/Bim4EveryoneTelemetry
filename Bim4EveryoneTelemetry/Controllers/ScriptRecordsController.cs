@@ -20,6 +20,6 @@ public class ScriptRecordsController : ControllerBase {
 
     [HttpPost]
     public Task Post(ScriptRecord scriptRecord) {
-        return _scriptRepository.Create(scriptRecord);
+        return _scriptRepository.CreateAsync(scriptRecord);
     }
 }

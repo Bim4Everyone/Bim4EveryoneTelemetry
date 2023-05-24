@@ -1,5 +1,6 @@
 using Bim4EveryoneTelemetry.Models;
 using Bim4EveryoneTelemetry.Models.Connections;
+using Bim4EveryoneTelemetry.Models.Connections.MongoDB;
 using Bim4EveryoneTelemetry.Models.Events;
 using Bim4EveryoneTelemetry.Models.Scripts;
 
@@ -19,6 +20,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add mongodb settings
+builder.Services.Configure<MongoDBSettings>(
+    builder.Configuration.GetSection("pyRevitDataBase"));
 
 // repositories
 builder.Services.AddTransient<IDBConnectionStatus, MongoDBConnection>();
