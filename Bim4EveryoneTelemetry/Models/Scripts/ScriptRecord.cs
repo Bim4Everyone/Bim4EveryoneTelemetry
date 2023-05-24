@@ -1,27 +1,29 @@
+using System.Text.Json.Serialization;
+
 namespace Bim4EveryoneTelemetry.Models.Scripts; 
 
 public record ScriptRecord(
     RecordMeta Meta,
     DateTimeOffset TimeStamp,
     string UserName,
-    string HostUserName,
-    Version RevitVersion,
+    [property: JsonPropertyName("host_user")] string HostUserName,
+    [property: JsonPropertyName("revit")] Version RevitVersion,
     Version RevitBuild,
     Guid SessionId,
-    Version PyRevit,
-    string CloneName,
-    bool IsDebugMode,
-    bool IsConfigMode,
-    bool IsExecFromGUI,
-    Guid ExecId,
-    DateTimeOffset ExecTimeStamp,
+    [property: JsonPropertyName("pyrevit")] Version PyRevitVersion,
+    [property: JsonPropertyName("clone")] string CloneName,
+    [property: JsonPropertyName("debug")] bool IsDebugMode,
+    [property: JsonPropertyName("config")]bool IsConfigMode,
+    [property: JsonPropertyName("from_gui")]bool IsExecFromGUI,
+    [property: JsonPropertyName("exec_id")] Guid ExecId,
+    [property: JsonPropertyName("exec_timestamp")] DateTimeOffset ExecTimeStamp,
     string CommandName,
     string CommandUniqueName,
-    string BundleName,
-    string ExtensionName,
-    string DocumentName,
-    string DocumentPath,
+    [property: JsonPropertyName("commandbundle")] string BundleName,
+    [property: JsonPropertyName("commandextension")] string ExtensionName,
+    [property: JsonPropertyName("docname")] string DocumentName,
+    [property: JsonPropertyName("docpath")] string DocumentPath,
     int ResultCode,
     Dictionary<string, object> CommandResults,
     string ScriptPath,
-    TraceInfo Trace);
+    [property: JsonPropertyName("trace")] TraceInfo TraceInfo);

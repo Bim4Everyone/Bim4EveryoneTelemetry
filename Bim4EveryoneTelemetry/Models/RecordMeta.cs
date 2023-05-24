@@ -1,3 +1,6 @@
-namespace Bim4EveryoneTelemetry.Models.Scripts; 
+using System.Text.Json.Serialization;
 
-public record RecordMeta(Version Schema);
+namespace Bim4EveryoneTelemetry.Models; 
+
+public record RecordMeta(
+    [property: JsonPropertyName("schema")] Version SchemaVersion);

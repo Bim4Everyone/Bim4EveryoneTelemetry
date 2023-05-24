@@ -1,5 +1,7 @@
 using Bim4EveryoneTelemetry.Models;
 using Bim4EveryoneTelemetry.Models.Connections;
+using Bim4EveryoneTelemetry.Models.Events;
+using Bim4EveryoneTelemetry.Models.Scripts;
 
 using Serilog;
 
@@ -20,6 +22,8 @@ builder.Services.AddSwaggerGen();
 
 // repositories
 builder.Services.AddTransient<IDBConnectionStatus, MongoDBConnection>();
+builder.Services.AddTransient<IRepository<EventRecord>, MongoDBConnection>();
+builder.Services.AddTransient<IRepository<ScriptRecord>, MongoDBConnection>();
 
 WebApplication app = builder.Build();
 
