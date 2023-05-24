@@ -2,7 +2,7 @@ using Bim4EveryoneTelemetry.Models.Scripts;
 
 namespace Bim4EveryoneTelemetry.Models.Events; 
 
-public record EventTelemetryRecord(
+public record EventRecord(
     RecordMeta Meta,
     DateTimeOffset TimeStamp,
     Guid HandlerId,

@@ -9,16 +9,16 @@ namespace Bim4EveryoneTelemetry.Controllers;
 [Route("api/v2/events")]
 public class EventRecordsController : ControllerBase {
     private readonly ILogger<EventRecordsController> _logger;
-    private readonly IDBConnectionStatus _connectionStatus;
+    private readonly IRepository<EventRecord> _eventRepository;
 
-    public EventRecordsController(ILogger<EventRecordsController> logger, IDBConnectionStatus connectionStatus) {
+    public EventRecordsController(ILogger<EventRecordsController> logger, IRepository<EventRecord> eventRepository) {
         _logger = logger;
-        _connectionStatus = connectionStatus;
+        _eventRepository = eventRepository;
     }
 
     [HttpPost]
-    public Task Post(EventTelemetryRecord eventTelemetryRecord) {
-        _logger.LogDebug("Post event telemetry record {ScriptTelemetryRecord}", eventTelemetryRecord);
-        return Task.CompletedTask;
+    public Task Post(EventRecord eventRecord) {
+        _logger.LogDebug("Post event telemetry record {ScriptTelemetryRecord}", eventRecord);
+        return _eventRepository.Create(eventRecord);
     }
 }

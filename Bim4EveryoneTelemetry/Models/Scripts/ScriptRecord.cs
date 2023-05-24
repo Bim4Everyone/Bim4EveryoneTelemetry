@@ -1,6 +1,6 @@
 namespace Bim4EveryoneTelemetry.Models.Scripts; 
 
-public record ScriptTelemetryRecord(
+public record ScriptRecord(
     RecordMeta Meta,
     DateTimeOffset TimeStamp,
     string UserName,

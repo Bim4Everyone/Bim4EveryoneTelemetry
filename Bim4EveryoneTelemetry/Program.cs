@@ -1,4 +1,5 @@
 using Bim4EveryoneTelemetry.Models;
+using Bim4EveryoneTelemetry.Models.Connections;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

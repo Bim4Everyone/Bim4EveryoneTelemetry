@@ -11,16 +11,16 @@ namespace Bim4EveryoneTelemetry.Controllers;
 [Route("api/v2/scripts")]
 public class ScriptRecordsController : ControllerBase {
     private readonly ILogger<ScriptRecordsController> _logger;
-    private readonly IDBConnectionStatus _connectionStatus;
+    private readonly IRepository<ScriptRecord> _scriptRepository;
 
-    public ScriptRecordsController(ILogger<ScriptRecordsController> logger, IDBConnectionStatus connectionStatus) {
+    public ScriptRecordsController(ILogger<ScriptRecordsController> logger, IRepository<ScriptRecord> scriptRepository) {
         _logger = logger;
-        _connectionStatus = connectionStatus;
+        _scriptRepository = scriptRepository;
     }
 
     [HttpPost]
-    public Task Post(ScriptTelemetryRecord scriptTelemetryRecord) {
-        _logger.LogDebug("Post script telemetry record {ScriptTelemetryRecord}", scriptTelemetryRecord);
-        return Task.CompletedTask;
+    public Task Post(ScriptRecord scriptRecord) {
+        _logger.LogDebug("Post script telemetry record {ScriptTelemetryRecord}", scriptRecord);
+        return _scriptRepository.Create(scriptRecord);
     }
 }
