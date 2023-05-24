@@ -1,0 +1,27 @@
+namespace Bim4EveryoneTelemetry.Models.Scripts; 
+
+public record ScriptTelemetryRecord(
+    RecordMeta Meta,
+    DateTimeOffset TimeStamp,
+    string UserName,
+    string HostUserName,
+    Version RevitVersion,
+    Version RevitBuild,
+    Guid SessionId,
+    Version PyRevit,
+    string CloneName,
+    bool IsDebugMode,
+    bool IsConfigMode,
+    bool IsExecFromGUI,
+    Guid ExecId,
+    DateTimeOffset ExecTimeStamp,
+    string CommandName,
+    string CommandUniqueName,
+    string BundleName,
+    string ExtensionName,
+    string DocumentName,
+    string DocumentPath,
+    int ResultCode,
+    Dictionary<string, object> CommandResults,
+    string ScriptPath,
+    TraceInfo Trace);
