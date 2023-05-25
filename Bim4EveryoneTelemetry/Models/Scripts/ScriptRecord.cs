@@ -1,5 +1,9 @@
 using System.Text.Json.Serialization;
 
+using Bim4EveryoneTelemetry.JsonConverters;
+
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace Bim4EveryoneTelemetry.Models.Scripts; 
 
 public record ScriptRecord(
@@ -25,6 +29,8 @@ public record ScriptRecord(
     [property: JsonPropertyName("docname")] string DocumentName,
     [property: JsonPropertyName("docpath")] string DocumentPath,
     int ResultCode,
-    object CommandResults,
+    [property:JsonConverter(typeof(DynamicDataJsonConverter))]
+    [property:BsonSerializer(typeof(DynamicDataBsonSerializer))]
+    string? CommandResults,
     string ScriptPath,
     [property: JsonPropertyName("trace")] TraceInfo TraceInfo);
