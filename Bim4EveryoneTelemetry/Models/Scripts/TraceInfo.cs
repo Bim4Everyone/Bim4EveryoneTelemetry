@@ -1,3 +1,15 @@
-namespace Bim4EveryoneTelemetry.Models.Scripts; 
+using System.Text.Json.Serialization;
 
-public record TraceInfo(EngineInfo Engine, string Message);
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace Bim4EveryoneTelemetry.Models.Scripts;
+
+public record TraceInfo {
+    [BsonElement("message")]
+    [JsonPropertyName("message")]
+    public string Message { get; init; } = null!;
+
+    [BsonElement("engine")]
+    [JsonPropertyName("engine")]
+    public EngineInfo Engine { get; init; } = null!;
+}
