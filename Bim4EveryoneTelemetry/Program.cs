@@ -4,6 +4,8 @@ using Bim4EveryoneTelemetry.Models.Connections.MongoDB;
 using Bim4EveryoneTelemetry.Models.Events;
 using Bim4EveryoneTelemetry.Models.Scripts;
 
+using Microsoft.AspNetCore.HttpLogging;
+
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,13 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .ReadFrom.Services(services)
     .Enrich.FromLogContext()
     .WriteTo.Console());
+
+// Add http logging (body, request, response)
+builder.Services.AddHttpLogging(logging => {
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -36,6 +45,7 @@ WebApplication app = builder.Build();
 if(app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHttpLogging();
 }
 
 app.UseHttpsRedirection();
