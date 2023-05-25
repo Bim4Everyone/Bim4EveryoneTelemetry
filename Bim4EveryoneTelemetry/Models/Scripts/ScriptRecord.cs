@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 
 using Bim4EveryoneTelemetry.JsonConverters;
 
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Bim4EveryoneTelemetry.Models.Scripts;
@@ -9,6 +10,7 @@ namespace Bim4EveryoneTelemetry.Models.Scripts;
 public record ScriptRecord {
     [BsonElement("sessionid")]
     [JsonPropertyName("sessionid")]
+    [BsonGuidRepresentation(GuidRepresentation.Standard)]
     public Guid SessionId { get; init; }
 
     [BsonElement("meta")]
@@ -21,7 +23,8 @@ public record ScriptRecord {
 
     [BsonElement("timestamp")]
     [JsonPropertyName("timestamp")]
-    public string TimeStamp { get; init; } = null!;
+    [BsonRepresentation(BsonType.DateTime)]
+    public DateTimeOffset TimeStamp { get; init; }
 
     [BsonElement("username")]
     [JsonPropertyName("username")]

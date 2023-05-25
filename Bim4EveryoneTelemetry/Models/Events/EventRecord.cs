@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Bim4EveryoneTelemetry.JsonConverters;
 using Bim4EveryoneTelemetry.Models.Scripts;
 
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Bim4EveryoneTelemetry.Models.Events;
@@ -10,6 +11,7 @@ namespace Bim4EveryoneTelemetry.Models.Events;
 public record EventRecord {
     [BsonElement("handler_id")]
     [JsonPropertyName("handler_id")]
+    [BsonGuidRepresentation(GuidRepresentation.Standard)]
     public Guid HandlerId { get; init; }
 
     [BsonElement("meta")]
@@ -26,7 +28,8 @@ public record EventRecord {
 
     [BsonElement("timestamp")]
     [JsonPropertyName("timestamp")]
-    public string TimeStamp { get; init; } = null!;
+    [BsonRepresentation(BsonType.DateTime)]
+    public DateTimeOffset TimeStamp { get; init; }
 
     [BsonElement("username")]
     [JsonPropertyName("username")]
