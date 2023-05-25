@@ -83,6 +83,7 @@ public record EventRecord {
     [JsonPropertyName("projectnum")]
     public string? ProjectNumber { get; init; }
 
+    [BsonElement("args")]
     [JsonPropertyName("args")]
     [JsonConverter(typeof(DynamicDataJsonConverter))]
     [BsonSerializer(typeof(DynamicDataBsonSerializer))]
