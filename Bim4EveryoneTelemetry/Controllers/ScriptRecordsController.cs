@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bim4EveryoneTelemetry.Controllers;
 
 [ApiController]
-[Route("api/v2/scripts")]
+[ApiVersion("2.0")]
+[Route("api/v{version:apiVersion}/scripts")]
 public class ScriptRecordsController : ControllerBase {
     private readonly ILogger<ScriptRecordsController> _logger;
     private readonly IRepository<ScriptRecord> _scriptRepository;

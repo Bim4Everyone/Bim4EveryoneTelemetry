@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bim4EveryoneTelemetry.Controllers; 
 
 [ApiController]
-[Route("api/v2/events")]
+[ApiVersion("2.0")]
+[Route("api/v{version:apiVersion}/events")]
 public class EventRecordsController : ControllerBase {
     private readonly ILogger<EventRecordsController> _logger;
     private readonly IRepository<EventRecord> _eventRepository;

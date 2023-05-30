@@ -5,6 +5,8 @@ using Bim4EveryoneTelemetry.Models.Events;
 using Bim4EveryoneTelemetry.Models.Scripts;
 
 using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 
 using Serilog;
 
@@ -26,26 +28,62 @@ builder.Services.AddHttpLogging(logging => {
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 // Add mongodb settings
 builder.Services.Configure<MongoDBSettings>(
     builder.Configuration.GetSection("pyRevitDataBase"));
 
-// repositories
+// Add repositories
 builder.Services.AddTransient<IDBConnectionStatus, MongoDBConnection>();
 builder.Services.AddTransient<IRepository<EventRecord>, MongoDBConnection>();
 builder.Services.AddTransient<IRepository<ScriptRecord>, MongoDBConnection>();
+
+// Add Swagger Gen doc
+builder.Services.AddSwaggerGen(options => {
+    // Include xml comments
+    var basePath = AppContext.BaseDirectory;
+    options.IncludeXmlComments(Path.Combine(basePath, "Bim4EveryoneTelemetry.xml"));
+
+    // Add open api metadata
+    options.SwaggerDoc("v2",
+        new OpenApiInfo {
+            Version = "v2",
+            Title = "Bim4Everyone Telemetry",
+            Description = "Telemetry server api",
+            Contact = new OpenApiContact {
+                Name = "dosymep", 
+                Url = new Uri("https://github.com/dosymep")
+            },
+            License = new OpenApiLicense {
+                Name = "MIT License",
+                Url = new Uri("https://github.com/dosymep/Bim4EveryoneTelemetry/blob/master/LICENSE.md")
+            },
+        });
+});
+
+// Add app versioning
+builder.Services.AddApiVersioning(setup => {
+    setup.DefaultApiVersion = new ApiVersion(2, 0);
+    setup.AssumeDefaultVersionWhenUnspecified = true;
+    setup.ReportApiVersions = true;
+});
+
+// Add app versioning settings
+builder.Services.AddVersionedApiExplorer(setup => {
+    setup.GroupNameFormat = "'v'VVV";
+    setup.SubstituteApiVersionInUrl = true;
+});
 
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment()) {
-    app.UseSwagger();
-    app.UseSwaggerUI();
     app.UseHttpLogging();
+    
+    app.UseSwagger();
+    app.UseSwaggerUI(c => {
+        c.SwaggerEndpoint("/swagger/v2/swagger.json", "V2");
+    });
 }
 
 app.UseHttpsRedirection();
