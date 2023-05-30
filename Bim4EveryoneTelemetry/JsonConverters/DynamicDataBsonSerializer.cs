@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace Bim4EveryoneTelemetry.JsonConverters;
 
-public class DynamicDataBsonSerializer : SerializerBase<string?> {
+internal class DynamicDataBsonSerializer : SerializerBase<string?> {
     public override string? Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args) {
         return BsonDocumentSerializer.Instance.Deserialize(context).ToString();
     }

@@ -8,7 +8,7 @@ using MongoDB.Driver;
 
 namespace Bim4EveryoneTelemetry.Models.Connections.MongoDB;
 
-public class MongoDBConnection : IDBConnectionStatus, IRepository<ScriptRecord>, IRepository<EventRecord> {
+internal class MongoDBConnection : IDBConnectionStatus, IRepository<ScriptRecord>, IRepository<EventRecord> {
     private readonly ILogger<MongoDBConnection> _logger;
     private readonly IMongoClient _mongoClient;
     private readonly IMongoDatabase _mongoDatabase;
