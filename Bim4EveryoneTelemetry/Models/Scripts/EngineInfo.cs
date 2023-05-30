@@ -12,7 +12,7 @@ namespace Bim4EveryoneTelemetry.Models.Scripts;
 public record EngineInfo {
     /// <summary>
     /// Engine type name.
-    /// https://pyrevitlabs.notion.site/Engines-7973ca3328c34fd1a95462f5c655475b
+    /// <br/><a href="https://pyrevitlabs.notion.site/Engines-7973ca3328c34fd1a95462f5c655475b">Engine types</a>.
     /// </summary>
     [BsonElement("type")]
     [JsonPropertyName("type")]
@@ -20,7 +20,7 @@ public record EngineInfo {
 
     /// <summary>
     /// Engine version.
-    /// https://pyrevitlabs.notion.site/Engines-7973ca3328c34fd1a95462f5c655475b
+    /// <br/> <a href="https://pyrevitlabs.notion.site/Engines-7973ca3328c34fd1a95462f5c655475b">Engines list</a>.
     /// </summary>
     [BsonElement("version")]
     [JsonPropertyName("version")]

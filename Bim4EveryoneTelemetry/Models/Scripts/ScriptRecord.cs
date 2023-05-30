@@ -35,32 +35,34 @@ public record ScriptRecord {
     public DateTimeOffset TimeStamp { get; init; }
 
     /// <summary>
-    /// Username who use Autodesk Revit (sets in options).
-    /// https://www.revitapidocs.com/2022/2a7c8664-de0d-7a43-e670-2e733e579609.htm
+    /// <a href="https://www.revitapidocs.com/2022/2a7c8664-de0d-7a43-e670-2e733e579609.htm">Username</a>
+    /// who use Autodesk Revit (sets in options).
     /// </summary>
     [BsonElement("username")]
     [JsonPropertyName("username")]
     public string UserName { get; init; } = null!;
 
     /// <summary>
-    /// Username who logged in Windows.
-    /// https://learn.microsoft.com/en-us/dotnet/api/system.environment.username
+    /// <a href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.username">Username</a>
+    /// who logged in Windows.
     /// </summary>
     [BsonElement("host_user")]
     [JsonPropertyName("host_user")]
     public string? HostUserName { get; init; } = null!;
 
     /// <summary>
-    /// Internal build number of the Autodesk Revit application.
-    /// https://www.revitapidocs.com/2022/c5963cab-c85b-561b-1ea2-b9d11b58050c.htm
+    /// Internal
+    /// <a href="https://www.revitapidocs.com/2022/c5963cab-c85b-561b-1ea2-b9d11b58050c.htm">build number</a>
+    /// of the Autodesk Revit application.
     /// </summary>
     [BsonElement("revitbuild")]
     [JsonPropertyName("revitbuild")]
     public string RevitBuild { get; init; } = null!;
 
     /// <summary>
-    /// Return the primary version of the Revit application.
-    /// https://www.revitapidocs.com/2022/35b18b73-4c47-fee3-d2f9-21298f029f7f.htm
+    /// Return the
+    /// <a href="https://www.revitapidocs.com/2022/35b18b73-4c47-fee3-d2f9-21298f029f7f.htm">primary version</a>
+    /// of the Revit application.
     /// </summary>
     [BsonElement("revit")]
     [JsonPropertyName("revit")]
@@ -74,24 +76,24 @@ public record ScriptRecord {
     public string PyRevitVersion { get; init; } = null!;
 
     /// <summary>
-    /// pyrevit clone name.
-    /// https://pyrevitlabs.notion.site/Manage-pyRevit-clones-e9f789f9431346b482021f2a87a6dabf
+    /// pyrevit
+    /// <a href="https://pyrevitlabs.notion.site/Manage-pyRevit-clones-e9f789f9431346b482021f2a87a6dabf">clone name</a>.
     /// </summary>
     [BsonElement("clone")]
     [JsonPropertyName("clone")]
     public string CloneName { get; init; } = null!;
     
     /// <summary>
-    /// pyrevit debug mode.
-    /// https://pyrevitlabs.notion.site/Button-Click-Modes-c829c5a60ddb4c3e819bc93dfbc3c98b#a09dd3a1d0634d4eab964eec07d74286
+    /// pyrevit
+    /// <a href="https://pyrevitlabs.notion.site/Button-Click-Modes-c829c5a60ddb4c3e819bc93dfbc3c98b#a09dd3a1d0634d4eab964eec07d74286">debug mode</a>.
     /// </summary>
     [BsonElement("debug")]
     [JsonPropertyName("debug")]
     public bool IsDebugMode { get; init; }
 
     /// <summary>
-    /// pyrevit config mode.
-    /// https://pyrevitlabs.notion.site/Button-Click-Modes-c829c5a60ddb4c3e819bc93dfbc3c98b
+    /// pyrevit
+    /// <a href="https://pyrevitlabs.notion.site/Button-Click-Modes-c829c5a60ddb4c3e819bc93dfbc3c98b">config mode</a>.
     /// </summary>
     [BsonElement("config")]
     [JsonPropertyName("config")]
@@ -148,16 +150,14 @@ public record ScriptRecord {
     public string CommandUniqueName { get; init; } = null!;
 
     /// <summary>
-    /// Document title.
-    /// https://www.revitapidocs.com/2022/4cee7916-d799-fc83-daf3-97cb03900b72.htm
+    /// Document <a href="https://www.revitapidocs.com/2022/4cee7916-d799-fc83-daf3-97cb03900b72.htm">Title</a> property.
     /// </summary>
     [BsonElement("docname")]
     [JsonPropertyName("docname")]
     public string DocumentName { get; init; } = null!;
 
     /// <summary>
-    /// Document path.
-    /// https://www.revitapidocs.com/2022/8a92a6fd-ce25-cd86-2068-f9dcb24d72d6.htm
+    /// Document <a href="https://www.revitapidocs.com/2022/8a92a6fd-ce25-cd86-2068-f9dcb24d72d6.htm">PathName</a> property.
     /// </summary>
     [BsonElement("docpath")]
     [JsonPropertyName("docpath")]
@@ -165,7 +165,7 @@ public record ScriptRecord {
 
     /// <summary>
     /// Script executed result code.
-    /// https://www.revitapidocs.com/2022/e6cebb3c-0c3f-7dc4-2063-e5df0a00b2f5.htm
+    /// <br/><a href="https://www.revitapidocs.com/2022/e6cebb3c-0c3f-7dc4-2063-e5df0a00b2f5.htm">ResultCode</a> enumeration.
     /// </summary>
     [BsonElement("resultcode")]
     [JsonPropertyName("resultcode")]
