@@ -119,7 +119,7 @@ public record ScriptRecord {
     [BsonElement("exec_timestamp")]
     [JsonPropertyName("exec_timestamp")]
     [BsonRepresentation(BsonType.DateTime)]
-    public string ExecTimeStamp { get; init; } = null!;
+    public DateTimeOffset ExecTimeStamp { get; init; }
 
     /// <summary>
     /// Command bundle name.
