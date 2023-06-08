@@ -40,7 +40,9 @@ public record LogEventRecord {
     /// An exception associated with the event, or null.
     /// </summary>
     [BsonElement("exception")]
-    public Exception? Exception { get; init; }
+    [JsonConverter(typeof(DynamicDataJsonConverter))]
+    [BsonSerializer(typeof(DynamicDataBsonSerializer))]
+    public string? Exception { get; init; }
 
     /// <summary>
     /// Revit Session Id (unique revit start instance)
