@@ -86,7 +86,7 @@ public record LogEventRecord {
     /// Revit <a href="https://www.revitapidocs.com/2017.1/320391bf-2c21-98ca-192c-da1d9becff11.htm">VersionNumber</a> property.
     /// </summary>
     [BsonElement("revit_version")]
-    public string RevitVersion { get; init; } = null!;
+    public int RevitVersion { get; init; }
 
     /// <summary>
     /// Revit <a href="https://www.revitapidocs.com/2017.1/2b1d8b80-a11c-2a57-63bd-6c0d67691879.htm">Language</a> property.
