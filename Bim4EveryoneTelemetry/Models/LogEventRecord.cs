@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 
 using Bim4EveryoneTelemetry.JsonConverters;
 
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Bim4EveryoneTelemetry.Models;
@@ -14,6 +15,7 @@ public record LogEventRecord {
     /// The time at which the event occurred.
     /// </summary>
     [BsonElement("timestamp")]
+    [BsonRepresentation(BsonType.DateTime)]
     public DateTimeOffset Timestamp { get; init; }
 
     /// <summary>
@@ -44,6 +46,7 @@ public record LogEventRecord {
     /// Revit Session Id (unique revit start instance)
     /// </summary>
     [BsonElement("session_id")]
+    [BsonGuidRepresentation(GuidRepresentation.Standard)]
     public Guid SessionId { get; init; }
 
     /// <summary>
@@ -56,6 +59,7 @@ public record LogEventRecord {
     /// Revit Plugin Session Id  (unique revit plugin start instance)
     /// </summary>
     [BsonElement("plugin_session_id")]
+    [BsonGuidRepresentation(GuidRepresentation.Standard)]
     public Guid PluginSessionId { get; init; }
 
     /// <summary>
@@ -92,19 +96,19 @@ public record LogEventRecord {
     /// Revit <a href="https://www.revitapidocs.com/2017.1/2a7c8664-de0d-7a43-e670-2e733e579609.htm">Username</a> property.
     /// </summary>
     [BsonElement("revit_username")]
-    public string RevitUserName { get; init; } = null!;
+    public string? RevitUserName { get; init; } = null!;
 
     /// <summary>
     /// Revit <a href="https://www.revitapidocs.com/2017.1/4cee7916-d799-fc83-daf3-97cb03900b72.htm">Document.Title</a> property.
     /// </summary>
     [BsonElement("doc_title")]
-    public string RevitDocumentTitle { get; init; } = null!;
+    public string? RevitDocumentTitle { get; init; } = null!;
 
     /// <summary>
     /// Revit <a href="https://www.revitapidocs.com/2022/8a92a6fd-ce25-cd86-2068-f9dcb24d72d6.htm">Document.PathName</a> property.
     /// </summary>
     [BsonElement("doc_pathname")]
-    public string RevitDocumentPathName { get; init; } = null!;
+    public string? RevitDocumentPathName { get; init; } = null!;
 
     /// <summary>
     /// Revit ModelPath property.
@@ -112,7 +116,7 @@ public record LogEventRecord {
     /// <br/>If <a href="https://www.revitapidocs.com/2017.1/7f368167-6543-9be9-67a3-c6e1696ae060.htm">Document.IsWorkshared</a> is true <a href="https://www.revitapidocs.com/2017.1/6d42ee05-5738-8685-2165-57f9809f3161.htm">Document.GetWorksharingCentralModelPath()</a>.
     /// </summary>
     [BsonElement("doc_modelpath")]
-    public string RevitDocumentModelPath { get; init; } = null!;
+    public string? RevitDocumentModelPath { get; init; } = null!;
 
     /// <summary>
     /// Dynamic properties data.
@@ -120,5 +124,5 @@ public record LogEventRecord {
     [BsonElement("log_event")]
     [JsonConverter(typeof(DynamicDataJsonConverter))]
     [BsonSerializer(typeof(DynamicDataBsonSerializer))]
-    public string LogEvent { get; init; } = null!;
+    public string? LogEvent { get; init; } = null!;
 }
