@@ -1,9 +1,13 @@
+using System.Collections;
+using System.Linq.Expressions;
+
 using Bim4EveryoneTelemetry.Models.Events;
 using Bim4EveryoneTelemetry.Models.Scripts;
 
 using Microsoft.Extensions.Options;
 
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace Bim4EveryoneTelemetry.Models.Connections.MongoDB;
@@ -21,6 +25,19 @@ internal class MongoDBConnection :
     private readonly IMongoCollection<EventRecord> _eventsCollection;
     private readonly IMongoCollection<ScriptRecord> _scriptCollection;
     private readonly IMongoCollection<LogEventRecord> _logEventsCollection;
+
+    static MongoDBConnection() {
+        if(BsonClassMap.IsClassMapRegistered(typeof(Exception)))
+            return;
+        
+        BsonClassMap.RegisterClassMap<Exception>(cm => {
+            cm.AutoMap();
+            cm.MapProperty<string>(ex => ex.Message);
+            cm.MapProperty<string?>(ex => ex.Source);
+            cm.MapProperty<string?>(ex => ex.StackTrace);
+            cm.MapProperty<IDictionary>(ex => ex.Data);
+        });
+    }
 
     public MongoDBConnection(ILogger<MongoDBConnection> logger, IOptions<MongoDBSettings> mongoDBSettings) {
         _logger = logger;
