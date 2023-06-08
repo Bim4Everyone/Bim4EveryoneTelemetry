@@ -5,4 +5,5 @@ internal class MongoDBSettings {
     public string DatabaseName { get; set; } = null!;
     public string EventsCollectionName { get; set; } = null!;
     public string ScriptsCollectionName { get; set; } = null!;
+    public string LogEventsCollectionName { get; set; } = null!;
 }

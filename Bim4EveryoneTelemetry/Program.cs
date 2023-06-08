@@ -37,6 +37,7 @@ builder.Services.Configure<MongoDBSettings>(
 builder.Services.AddTransient<IDBConnectionStatus, MongoDBConnection>();
 builder.Services.AddTransient<IRepository<EventRecord>, MongoDBConnection>();
 builder.Services.AddTransient<IRepository<ScriptRecord>, MongoDBConnection>();
+builder.Services.AddTransient<IRepository<LogEventRecord>, MongoDBConnection>();
 
 // Add Swagger Gen doc
 builder.Services.AddSwaggerGen(options => {
