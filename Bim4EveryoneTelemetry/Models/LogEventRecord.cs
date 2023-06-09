@@ -67,13 +67,13 @@ public record LogEventRecord {
     /// <summary>
     /// Environment UserName
     /// </summary>
-    [BsonElement("environment_username")]
+    [BsonElement("env_username")]
     public string EnvironmentUserName { get; init; } = null!;
 
     /// <summary>
     /// Environment MachineName
     /// </summary>
-    [BsonElement("environment_machinename")]
+    [BsonElement("env_machinename")]
     public string EnvironmentMachineName { get; init; } = null!;
 
     /// <summary>
