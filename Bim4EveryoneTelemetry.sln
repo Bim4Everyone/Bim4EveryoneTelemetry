@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bim4EveryoneTelemetry", "Bim4EveryoneTelemetry\Bim4EveryoneTelemetry.csproj", "{7DFF5C27-66DC-404D-9AC4-8E9F2031E0B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{C4E33879-1609-457E-859D-603E20EF2ED2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4E33879-1609-457E-859D-603E20EF2ED2}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		CONTRIBUTING.md = CONTRIBUTING.md
