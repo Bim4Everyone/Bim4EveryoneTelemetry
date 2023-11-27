@@ -29,6 +29,9 @@ builder.Services.AddHttpLogging(logging => {
 // Add services to the container.
 builder.Services.AddControllers();
 
+// Add default environment prefix
+builder.Configuration.AddEnvironmentVariables(prefix: "B4E");
+
 // Add mongodb settings
 builder.Services.Configure<MongoDBSettings>(
     builder.Configuration.GetSection("pyRevitDataBase"));
@@ -53,11 +56,11 @@ builder.Services.AddSwaggerGen(options => {
             Description = "Telemetry server api",
             Contact = new OpenApiContact {
                 Name = "dosymep", 
-                Url = new Uri("https://github.com/dosymep")
+                Url = new Uri("https://github.com/Bim4Everyone")
             },
             License = new OpenApiLicense {
                 Name = "MIT License",
-                Url = new Uri("https://github.com/dosymep/Bim4EveryoneTelemetry/blob/master/LICENSE.md")
+                Url = new Uri("https://github.com/Bim4Everyone/Bim4EveryoneTelemetry/blob/master/LICENSE.md")
             },
         });
 });
@@ -80,7 +83,7 @@ WebApplication app = builder.Build();
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment()) {
     app.UseHttpLogging();
-    
+
     app.UseSwagger();
     app.UseSwaggerUI(c => {
         c.SwaggerEndpoint("/swagger/v2/swagger.json", "V2");

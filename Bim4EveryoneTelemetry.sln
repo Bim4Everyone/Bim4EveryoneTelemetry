@@ -8,16 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CONTRIBUTING.md = CONTRIBUTING.md
 		CREDITS.md = CREDITS.md
 		LICENSE.md = LICENSE.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{0683C422-6A08-49F9-8AC7-4B4F3E7D15F5}"
-	ProjectSection(SolutionItems) = preProject
 		docker-compose.yaml = docker-compose.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{6DBA58E8-E9E9-4428-B345-236FA38BC440}"
-	ProjectSection(SolutionItems) = preProject
-		db\Dockerfile = db\Dockerfile
+		.env = .env
 	EndProjectSection
 EndProject
 Global
@@ -32,6 +24,5 @@ Global
 		{7DFF5C27-66DC-404D-9AC4-8E9F2031E0B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6DBA58E8-E9E9-4428-B345-236FA38BC440} = {0683C422-6A08-49F9-8AC7-4B4F3E7D15F5}
 	EndGlobalSection
 EndGlobal

@@ -1,18 +1,25 @@
 services:
 
-  db:
+  mongo:
     image: mongo
     restart: always
+    container_name: bim4everyone-mongo
     ports:
       - 27017:27017
+    volumes:
+      - ./mongodb:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
   
   telemetry:
     build: ./Bim4EveryoneTelemetry
     restart: always
+    container_name: bim4everyone-telemetry
+    depends_on:
+      - mongo
     ports:
       - 8080:80
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:80
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
