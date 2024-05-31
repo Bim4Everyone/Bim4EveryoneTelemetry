@@ -43,7 +43,7 @@ internal class MongoDBConnection :
         _logger = logger;
 
         _mongoClient = new MongoClient(
-            mongoDBSettings.Value.ConnectionString + $"/?authSource={mongoDBSettings.Value.DatabaseName}");
+            mongoDBSettings.Value.ConnectionString);
 
         _mongoDatabase = _mongoClient.GetDatabase(
             mongoDBSettings.Value.DatabaseName);

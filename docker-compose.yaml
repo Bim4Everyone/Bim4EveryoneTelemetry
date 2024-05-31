@@ -1,18 +1,23 @@
 services:
-
-  db:
+  telemetry.db:
+    container_name: telemetry-db
     image: mongo
-    restart: always
+    command: --auth
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGO_INITDB_DATABASE: Bim4Everyone
+    volumes:
+      - ./mongodb:/data/db
   
-  telemetry:
-    build: ./Bim4EveryoneTelemetry
-    restart: always
+  telemetry.api:
+    container_name: telemetry-api
+    depends_on:
+      - telemetry.db
+    build: ./src/Bim4EveryoneTelemetry/
     ports:
-      - 8080:80
+      - 80:80
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
