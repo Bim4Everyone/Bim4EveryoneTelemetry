@@ -1,7 +1,7 @@
 namespace Bim4EveryoneTelemetry.Models;
 
 /// <summary>
-/// Server status information.
+///     Server status information.
 /// </summary>
 /// <param name="Status">Connection status (pass or fail).</param>
 /// <param name="ServiceId">Service unique id.</param>

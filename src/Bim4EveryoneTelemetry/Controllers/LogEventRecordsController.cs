@@ -2,10 +2,10 @@ using Bim4EveryoneTelemetry.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bim4EveryoneTelemetry.Controllers; 
+namespace Bim4EveryoneTelemetry.Controllers;
 
 /// <summary>
-/// Logs records controller.
+///     Logs records controller.
 /// </summary>
 [ApiController]
 [ApiVersion("2.0")]
@@ -15,17 +15,18 @@ public class LogEventRecordsController {
     private readonly IRepository<LogEventRecord> _logRepository;
 
     /// <summary>
-    /// Creates log event records controller.
+    ///     Creates log event records controller.
     /// </summary>
     /// <param name="logger">Logger.</param>
     /// <param name="logRepository">Log event repository.</param>
-    public LogEventRecordsController(ILogger<LogEventRecordsController> logger, IRepository<LogEventRecord> logRepository) {
+    public LogEventRecordsController(ILogger<LogEventRecordsController> logger,
+        IRepository<LogEventRecord> logRepository) {
         _logger = logger;
         _logRepository = logRepository;
     }
 
     /// <summary>
-    /// Adds log event record to DB.
+    ///     Adds log event record to DB.
     /// </summary>
     /// <param name="logEventRecord">Adding log event records.</param>
     /// <returns>Returns adding log event records task.</returns>

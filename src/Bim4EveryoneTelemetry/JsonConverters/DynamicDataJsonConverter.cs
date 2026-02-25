@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Dynamic;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Bim4EveryoneTelemetry.JsonConverters;
@@ -11,7 +8,7 @@ internal class DynamicDataJsonConverter : JsonConverter<string?> {
         if(reader.TokenType == JsonTokenType.Null) {
             return null;
         }
-        
+
         return JsonDocument.ParseValue(ref reader).RootElement.GetRawText();
     }
 

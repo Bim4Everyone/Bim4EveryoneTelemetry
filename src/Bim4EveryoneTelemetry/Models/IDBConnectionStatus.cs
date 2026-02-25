@@ -1,16 +1,16 @@
-namespace Bim4EveryoneTelemetry.Models; 
+namespace Bim4EveryoneTelemetry.Models;
 
 /// <summary>
-/// DB connection status interface.
+///     DB connection status interface.
 /// </summary>
 public interface IDBConnectionStatus {
     /// <summary>
-    /// Returns connection name.
+    ///     Returns connection name.
     /// </summary>
     string ConnectionName { get; }
-    
+
     /// <summary>
-    /// Returns connection status.
+    ///     Returns connection status.
     /// </summary>
     /// <returns>Returns connection status.</returns>
     ConnectionStatus GetConnectionStatus();

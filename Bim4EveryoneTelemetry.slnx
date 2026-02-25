@@ -1,10 +1,10 @@
 <Solution>
-  <Folder Name="/Solution Items/">
-    <File Path="CONTRIBUTING.md" />
-    <File Path="CREDITS.md" />
-    <File Path="docker-compose.yaml" />
-    <File Path="LICENSE.md" />
-    <File Path="README.md" />
-  </Folder>
-  <Project Path="src/Bim4EveryoneTelemetry/Bim4EveryoneTelemetry.csproj" />
+    <Folder Name="/Solution Items/">
+        <File Path="CONTRIBUTING.md"/>
+        <File Path="CREDITS.md"/>
+        <File Path="docker-compose.yaml"/>
+        <File Path="LICENSE.md"/>
+        <File Path="README.md"/>
+    </Folder>
+    <Project Path="src/Bim4EveryoneTelemetry/Bim4EveryoneTelemetry.csproj"/>
 </Solution>
