@@ -1,11 +1,11 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS sdk
+﻿FROM mcr.microsoft.com/dotnet/sdk:10.0 AS sdk
 WORKDIR /app
 
 COPY . ./
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=sdk /app/publish .
 ENTRYPOINT ["dotnet", "Bim4EveryoneTelemetry.dll"]

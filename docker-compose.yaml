@@ -4,7 +4,7 @@ services:
     image: mongo
     command: --auth
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: user
       MONGO_INITDB_ROOT_PASSWORD: pass
@@ -18,6 +18,6 @@ services:
       - telemetry.db
     build: ./src/Bim4EveryoneTelemetry/
     ports:
-      - 80:8080
+      - "80:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

@@ -5,7 +5,7 @@ using Bim4EveryoneTelemetry.Models.Scripts;
 
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 
 using Serilog;
 
