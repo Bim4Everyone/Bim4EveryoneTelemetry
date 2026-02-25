@@ -24,7 +24,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("meta")]
     [JsonPropertyName("meta")]
-    public MetaRecord Meta { get; init; } = null!;
+    public required MetaRecord Meta { get; init; }
 
     /// <summary>
     ///     When script started.
@@ -40,7 +40,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("username")]
     [JsonPropertyName("username")]
-    public string UserName { get; init; } = null!;
+    public required string UserName { get; init; }
 
     /// <summary>
     ///     <a href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.username">Username</a>
@@ -48,7 +48,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("host_user")]
     [JsonPropertyName("host_user")]
-    public string? HostUserName { get; init; } = null!;
+    public string? HostUserName { get; init; }
 
     /// <summary>
     ///     Internal
@@ -57,7 +57,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("revitbuild")]
     [JsonPropertyName("revitbuild")]
-    public string RevitBuild { get; init; } = null!;
+    public required string RevitBuild { get; init; }
 
     /// <summary>
     ///     Return the
@@ -66,14 +66,14 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("revit")]
     [JsonPropertyName("revit")]
-    public string RevitVersion { get; init; } = null!;
+    public required string RevitVersion { get; init; }
 
     /// <summary>
     ///     pyrevit build version.
     /// </summary>
     [BsonElement("pyrevit")]
     [JsonPropertyName("pyrevit")]
-    public string PyRevitVersion { get; init; } = null!;
+    public required string PyRevitVersion { get; init; }
 
     /// <summary>
     ///     pyrevit
@@ -81,7 +81,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("clone")]
     [JsonPropertyName("clone")]
-    public string CloneName { get; init; } = null!;
+    public required string CloneName { get; init; }
 
     /// <summary>
     ///     pyrevit
@@ -116,7 +116,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("exec_id")]
     [JsonPropertyName("exec_id")]
-    public string ExecId { get; init; } = null!;
+    public required string ExecId { get; init; }
 
     /// <summary>
     ///     When script executed.
@@ -131,35 +131,35 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("commandbundle")]
     [JsonPropertyName("commandbundle")]
-    public string BundleName { get; init; } = null!;
+    public required string BundleName { get; init; }
 
     /// <summary>
     ///     Command extension name.
     /// </summary>
     [BsonElement("commandextension")]
     [JsonPropertyName("commandextension")]
-    public string ExtensionName { get; init; } = null!;
+    public required string ExtensionName { get; init; }
 
     /// <summary>
     ///     Command name.
     /// </summary>
     [BsonElement("commandname")]
     [JsonPropertyName("commandname")]
-    public string CommandName { get; init; } = null!;
+    public required string CommandName { get; init; }
 
     /// <summary>
     ///     Command unique name.
     /// </summary>
     [BsonElement("commanduniquename")]
     [JsonPropertyName("commanduniquename")]
-    public string CommandUniqueName { get; init; } = null!;
+    public required string CommandUniqueName { get; init; }
 
     /// <summary>
     ///     Document <a href="https://www.revitapidocs.com/2022/4cee7916-d799-fc83-daf3-97cb03900b72.htm">Title</a> property.
     /// </summary>
     [BsonElement("docname")]
     [JsonPropertyName("docname")]
-    public string DocumentName { get; init; } = null!;
+    public required string DocumentName { get; init; }
 
     /// <summary>
     ///     Document <a href="https://www.revitapidocs.com/2022/8a92a6fd-ce25-cd86-2068-f9dcb24d72d6.htm">PathName</a>
@@ -167,7 +167,7 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("docpath")]
     [JsonPropertyName("docpath")]
-    public string DocumentPath { get; init; } = null!;
+    public required string DocumentPath { get; init; }
 
     /// <summary>
     ///     Script executed result code.
@@ -183,14 +183,14 @@ public record ScriptRecord {
     /// </summary>
     [BsonElement("scriptpath")]
     [JsonPropertyName("scriptpath")]
-    public string ScriptPath { get; init; } = null!;
+    public required string ScriptPath { get; init; }
 
     /// <summary>
     ///     Information about execution.
     /// </summary>
     [BsonElement("trace")]
     [JsonPropertyName("trace")]
-    public TraceInfo TraceInfo { get; init; } = null!;
+    public required TraceInfo TraceInfo { get; init; }
 
     /// <summary>
     ///     Additional command results.

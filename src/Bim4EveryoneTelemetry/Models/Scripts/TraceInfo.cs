@@ -14,12 +14,12 @@ public record TraceInfo {
     /// </summary>
     [BsonElement("message")]
     [JsonPropertyName("message")]
-    public string Message { get; init; } = null!;
+    public required string Message { get; init; } 
 
     /// <summary>
     ///     Script engine information.
     /// </summary>
     [BsonElement("engine")]
     [JsonPropertyName("engine")]
-    public EngineInfo Engine { get; init; } = null!;
+    public required EngineInfo Engine { get; init; }
 }

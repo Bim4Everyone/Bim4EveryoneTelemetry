@@ -22,19 +22,19 @@ public record LogEventRecord {
     ///     The level of the event.
     /// </summary>
     [BsonElement("log_level")]
-    public string Level { get; init; } = null!;
+    public required string Level { get; init; }
 
     /// <summary>
     ///     The message template describing the event.
     /// </summary>
     [BsonElement("message_template")]
-    public string MessageTemplate { get; init; } = null!;
+    public required string MessageTemplate { get; init; }
 
     /// <summary>
     ///     The render message describing the event.
     /// </summary>
     [BsonElement("rendered_message")]
-    public string RenderedMessage { get; init; } = null!;
+    public required string RenderedMessage { get; init; }
 
     /// <summary>
     ///     An exception associated with the event, or null.
@@ -55,7 +55,7 @@ public record LogEventRecord {
     ///     Revit plugin name.
     /// </summary>
     [BsonElement("plugin_name")]
-    public string PluginName { get; init; } = null!;
+    public required string PluginName { get; init; }
 
     /// <summary>
     ///     Revit Plugin Session Id  (unique revit plugin start instance)
@@ -68,20 +68,20 @@ public record LogEventRecord {
     ///     Environment UserName
     /// </summary>
     [BsonElement("env_username")]
-    public string EnvironmentUserName { get; init; } = null!;
+    public required string EnvironmentUserName { get; init; }
 
     /// <summary>
     ///     Environment MachineName
     /// </summary>
     [BsonElement("env_machinename")]
-    public string EnvironmentMachineName { get; init; } = null!;
+    public required string EnvironmentMachineName { get; init; }
 
     /// <summary>
     ///     Revit <a href="https://www.revitapidocs.com/2017.1/04ef312a-e25a-cbcd-40c4-43fe6311e677.htm">VersionBuild</a>
     ///     property.
     /// </summary>
     [BsonElement("revit_build")]
-    public string RevitBuild { get; init; } = null!;
+    public required string RevitBuild { get; init; }
 
     /// <summary>
     ///     Revit <a href="https://www.revitapidocs.com/2017.1/320391bf-2c21-98ca-192c-da1d9becff11.htm">VersionNumber</a>
@@ -94,27 +94,27 @@ public record LogEventRecord {
     ///     Revit <a href="https://www.revitapidocs.com/2017.1/2b1d8b80-a11c-2a57-63bd-6c0d67691879.htm">Language</a> property.
     /// </summary>
     [BsonElement("revit_language")]
-    public string RevitLanguage { get; init; } = null!;
+    public required string RevitLanguage { get; init; }
 
     /// <summary>
     ///     Revit <a href="https://www.revitapidocs.com/2017.1/2a7c8664-de0d-7a43-e670-2e733e579609.htm">Username</a> property.
     /// </summary>
     [BsonElement("revit_username")]
-    public string? RevitUserName { get; init; } = null!;
+    public string? RevitUserName { get; init; }
 
     /// <summary>
     ///     Revit <a href="https://www.revitapidocs.com/2017.1/4cee7916-d799-fc83-daf3-97cb03900b72.htm">Document.Title</a>
     ///     property.
     /// </summary>
     [BsonElement("doc_title")]
-    public string? RevitDocumentTitle { get; init; } = null!;
+    public string? RevitDocumentTitle { get; init; }
 
     /// <summary>
     ///     Revit <a href="https://www.revitapidocs.com/2022/8a92a6fd-ce25-cd86-2068-f9dcb24d72d6.htm">Document.PathName</a>
     ///     property.
     /// </summary>
     [BsonElement("doc_pathname")]
-    public string? RevitDocumentPathName { get; init; } = null!;
+    public string? RevitDocumentPathName { get; init; }
 
     /// <summary>
     ///     Revit ModelPath property.
@@ -130,7 +130,7 @@ public record LogEventRecord {
     ///     .
     /// </summary>
     [BsonElement("doc_modelpath")]
-    public string? RevitDocumentModelPath { get; init; } = null!;
+    public string? RevitDocumentModelPath { get; init; }
 
     /// <summary>
     ///     Dynamic properties data.
@@ -138,5 +138,5 @@ public record LogEventRecord {
     [BsonElement("log_event")]
     [JsonConverter(typeof(DynamicDataJsonConverter))]
     [BsonSerializer(typeof(DynamicDataBsonSerializer))]
-    public string? LogEvent { get; init; } = null!;
+    public string? LogEvent { get; init; }
 }

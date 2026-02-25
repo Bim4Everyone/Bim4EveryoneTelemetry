@@ -24,14 +24,14 @@ public record EventRecord {
     /// </summary>
     [BsonElement("meta")]
     [JsonPropertyName("meta")]
-    public MetaRecord Meta { get; init; } = null!;
+    public required MetaRecord Meta { get; init; }
 
     /// <summary>
     ///     Event type name.
     /// </summary>
     [BsonElement("type")]
     [JsonPropertyName("type")]
-    public string EventType { get; init; } = null!;
+    public required string EventType { get; init; }
 
     /// <summary>
     ///     Revit event
@@ -39,7 +39,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("status")]
     [JsonPropertyName("status")]
-    public string? Status { get; init; } = null!;
+    public string? Status { get; init; }
 
     /// <summary>
     ///     When event started.
@@ -55,7 +55,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("username")]
     [JsonPropertyName("username")]
-    public string UserName { get; init; } = null!;
+    public required string UserName { get; init; }
 
     /// <summary>
     ///     <a href="https://learn.microsoft.com/en-us/dotnet/api/system.environment.username">Username</a>
@@ -63,7 +63,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("host_user")]
     [JsonPropertyName("host_user")]
-    public string? HostUserName { get; init; } = null!;
+    public string? HostUserName { get; init; }
 
     /// <summary>
     ///     Internal
@@ -72,7 +72,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("revitbuild")]
     [JsonPropertyName("revitbuild")]
-    public string RevitBuild { get; init; } = null!;
+    public required string RevitBuild { get; init; }
 
     /// <summary>
     ///     Return the
@@ -81,7 +81,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("revit")]
     [JsonPropertyName("revit")]
-    public string RevitVersion { get; init; } = null!;
+    public required string RevitVersion { get; init; }
 
     /// <summary>
     ///     If event was cancelled <see langword="true" />, otherwise  <see langword="false" />.
@@ -123,7 +123,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("doctype")]
     [JsonPropertyName("doctype")]
-    public string? DocumentType { get; init; } = null!;
+    public string? DocumentType { get; init; }
 
     /// <summary>
     ///     Document template name.
@@ -132,14 +132,14 @@ public record EventRecord {
     /// </summary>
     [BsonElement("doctemplate")]
     [JsonPropertyName("doctemplate")]
-    public string? DocumentTemplate { get; init; } = null!;
+    public string? DocumentTemplate { get; init; }
 
     /// <summary>
     ///     Document <a href="https://www.revitapidocs.com/2022/4cee7916-d799-fc83-daf3-97cb03900b72.htm">Title</a> property.
     /// </summary>
     [BsonElement("docname")]
     [JsonPropertyName("docname")]
-    public string? DocumentName { get; init; } = null!;
+    public string? DocumentName { get; init; }
 
     /// <summary>
     ///     Document <a href="https://www.revitapidocs.com/2022/8a92a6fd-ce25-cd86-2068-f9dcb24d72d6.htm">PathName</a>
@@ -147,7 +147,7 @@ public record EventRecord {
     /// </summary>
     [BsonElement("docpath")]
     [JsonPropertyName("docpath")]
-    public string? DocumentPath { get; init; } = null!;
+    public string? DocumentPath { get; init; }
 
     /// <summary>
     ///     Project name
@@ -174,5 +174,5 @@ public record EventRecord {
     [JsonPropertyName("args")]
     [JsonConverter(typeof(DynamicDataJsonConverter))]
     [BsonSerializer(typeof(DynamicDataBsonSerializer))]
-    public string? EventArgs { get; init; } = null!;
+    public string? EventArgs { get; init; }
 }

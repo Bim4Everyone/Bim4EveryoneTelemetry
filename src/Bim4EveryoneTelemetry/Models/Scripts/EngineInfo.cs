@@ -16,7 +16,7 @@ public record EngineInfo {
     /// </summary>
     [BsonElement("type")]
     [JsonPropertyName("type")]
-    public string Type { get; init; } = null!;
+    public required string Type { get; init; }
 
     /// <summary>
     ///     Engine version.
@@ -24,7 +24,7 @@ public record EngineInfo {
     /// </summary>
     [BsonElement("version")]
     [JsonPropertyName("version")]
-    public string Version { get; init; } = null!;
+    public required string Version { get; init; }
 
     /// <summary>
     ///     System paths using by script.

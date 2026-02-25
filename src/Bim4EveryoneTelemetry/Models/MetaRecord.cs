@@ -13,5 +13,5 @@ public record MetaRecord {
     /// </summary>
     [BsonElement("schema")]
     [JsonPropertyName("schema")]
-    public Version SchemaVersion { get; init; } = null!;
+    public required Version SchemaVersion { get; init; }
 }
