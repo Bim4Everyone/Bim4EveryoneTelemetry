@@ -4,7 +4,7 @@ namespace Bim4EveryoneTelemetry.Models;
 ///     Base interface for repositories.
 /// </summary>
 /// <typeparam name="T">Model class.</typeparam>
-public interface IRepository<T> {
+public interface IRepository<in T> {
     /// <summary>
     ///     Async create row in DB.
     /// </summary>
