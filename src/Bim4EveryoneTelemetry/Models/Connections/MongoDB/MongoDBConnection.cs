@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq.Expressions;
 
 using Bim4EveryoneTelemetry.Models.Events;
 using Bim4EveryoneTelemetry.Models.Scripts;
@@ -17,19 +16,19 @@ internal class MongoDBConnection :
     IRepository<ScriptRecord>,
     IRepository<EventRecord>,
     IRepository<LogEventRecord> {
+    private readonly IMongoCollection<EventRecord> _eventsCollection;
+    private readonly IMongoCollection<LogEventRecord> _logEventsCollection;
     private readonly ILogger<MongoDBConnection> _logger;
 
     private readonly IMongoClient _mongoClient;
     private readonly IMongoDatabase _mongoDatabase;
-
-    private readonly IMongoCollection<EventRecord> _eventsCollection;
     private readonly IMongoCollection<ScriptRecord> _scriptCollection;
-    private readonly IMongoCollection<LogEventRecord> _logEventsCollection;
 
     static MongoDBConnection() {
-        if(BsonClassMap.IsClassMapRegistered(typeof(Exception)))
+        if(BsonClassMap.IsClassMapRegistered(typeof(Exception))) {
             return;
-        
+        }
+
         BsonClassMap.RegisterClassMap<Exception>(cm => {
             cm.AutoMap();
             cm.MapProperty<string>(ex => ex.Message);
@@ -61,13 +60,9 @@ internal class MongoDBConnection :
     public string ConnectionName => "mongodb";
 
     public ConnectionStatus GetConnectionStatus() {
-        var command = new BsonDocumentCommand<BsonDocument>(new BsonDocument() {{"buildInfo", 1}});
-        var version = _mongoDatabase.RunCommand(command)["version"];
-        return new ConnectionStatus(Status: "pass", Version: new Version(version.AsString));
-    }
-
-    public async Task CreateAsync(ScriptRecord item) {
-        await _scriptCollection.InsertOneAsync(item);
+        BsonDocumentCommand<BsonDocument> command = new(new BsonDocument {{"buildInfo", 1}});
+        BsonValue? version = _mongoDatabase.RunCommand(command)["version"];
+        return new ConnectionStatus("pass", new Version(version.AsString));
     }
 
     public async Task CreateAsync(EventRecord item) {
@@ -76,6 +71,10 @@ internal class MongoDBConnection :
 
     public async Task CreateAsync(LogEventRecord item) {
         await _logEventsCollection.InsertOneAsync(item);
+    }
+
+    public async Task CreateAsync(ScriptRecord item) {
+        await _scriptCollection.InsertOneAsync(item);
     }
 
     public Task Save() {

@@ -1,12 +1,11 @@
 using Bim4EveryoneTelemetry.Models;
-using Bim4EveryoneTelemetry.Models.Connections;
 using Bim4EveryoneTelemetry.Models.Connections.MongoDB;
 using Bim4EveryoneTelemetry.Models.Events;
 using Bim4EveryoneTelemetry.Models.Scripts;
 
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 
 using Serilog;
 
@@ -42,7 +41,7 @@ builder.Services.AddTransient<IRepository<LogEventRecord>, MongoDBConnection>();
 // Add Swagger Gen doc
 builder.Services.AddSwaggerGen(options => {
     // Include xml comments
-    var basePath = AppContext.BaseDirectory;
+    string basePath = AppContext.BaseDirectory;
     options.IncludeXmlComments(Path.Combine(basePath, "Bim4EveryoneTelemetry.xml"));
 
     // Add open api metadata
@@ -51,14 +50,11 @@ builder.Services.AddSwaggerGen(options => {
             Version = "v2",
             Title = "Bim4Everyone Telemetry",
             Description = "Telemetry server api",
-            Contact = new OpenApiContact {
-                Name = "dosymep", 
-                Url = new Uri("https://github.com/dosymep")
-            },
+            Contact = new OpenApiContact {Name = "dosymep", Url = new Uri("https://github.com/dosymep")},
             License = new OpenApiLicense {
                 Name = "MIT License",
                 Url = new Uri("https://github.com/dosymep/Bim4EveryoneTelemetry/blob/master/LICENSE.md")
-            },
+            }
         });
 });
 
@@ -80,7 +76,7 @@ WebApplication app = builder.Build();
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment()) {
     app.UseHttpLogging();
-    
+
     app.UseSwagger();
     app.UseSwaggerUI(c => {
         c.SwaggerEndpoint("/swagger/v2/swagger.json", "V2");

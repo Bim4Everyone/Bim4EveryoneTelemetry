@@ -7,19 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bim4EveryoneTelemetry.Controllers;
 
 /// <summary>
-/// Route status controller.
+///     Route status controller.
 /// </summary>
 [ApiController]
 [ApiVersion("2.0")]
 [Route("api/v{version:apiVersion}/status")]
 public class RouteStatusController : ControllerBase {
+    private readonly IDBConnectionStatus _connectionStatus;
     private readonly ILogger<RouteStatusController> _logger;
 
     private readonly Guid _serviceId = Guid.NewGuid();
-    private readonly IDBConnectionStatus _connectionStatus;
 
     /// <summary>
-    /// Creates route status controller.
+    ///     Creates route status controller.
     /// </summary>
     /// <param name="logger">Logger.</param>
     /// <param name="connectionStatus">Connection status.</param>
@@ -29,14 +29,14 @@ public class RouteStatusController : ControllerBase {
     }
 
     /// <summary>
-    /// Returns connection status.
+    ///     Returns connection status.
     /// </summary>
     /// <returns>Returns connection status.</returns>
     [HttpGet]
     public ServerStatus Get() {
-        return new ServerStatus(Status: "pass", ServiceId: _serviceId,
-            Version: Assembly.GetExecutingAssembly().GetName().Version ?? new Version(),
-            Checks: new Dictionary<string, ConnectionStatus>() {
+        return new ServerStatus("pass", _serviceId,
+            Assembly.GetExecutingAssembly().GetName().Version ?? new Version(),
+            new Dictionary<string, ConnectionStatus> {
                 {_connectionStatus.ConnectionName, _connectionStatus.GetConnectionStatus()}
             });
     }

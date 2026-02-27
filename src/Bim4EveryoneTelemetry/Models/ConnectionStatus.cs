@@ -1,7 +1,7 @@
-namespace Bim4EveryoneTelemetry.Models; 
+namespace Bim4EveryoneTelemetry.Models;
 
 /// <summary>
-/// Connection status information.
+///     Connection status information.
 /// </summary>
 /// <param name="Status">Connection status (pass or fail).</param>
 /// <param name="Version">Connection version.</param>

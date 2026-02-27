@@ -1,23 +1,28 @@
 services:
-  telemetry.db:
-    container_name: telemetry-db
+  b4e-telemetry:
+    depends_on: [ b4e-mongo ]
+    build: ./src/Bim4EveryoneTelemetry/
+    container_name: b4e-telemetry
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+    environment:
+      - pyRevitDataBase__ConnectionString=${ConnectionString}
+      - ASPNETCORE_ENVIRONMENT=Development
+  
+  b4e-mongo:
+    container_name: b4e-mongo
     image: mongo
     command: --auth
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: user
-      MONGO_INITDB_ROOT_PASSWORD: pass
-      MONGO_INITDB_DATABASE: Bim4Everyone
-    volumes:
-      - ./mongodb:/data/db
-  
-  telemetry.api:
-    container_name: telemetry-api
-    depends_on:
-      - telemetry.db
-    build: ./src/Bim4EveryoneTelemetry/
-    ports:
-      - 80:8080
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=Bim4Everyone
+    healthcheck:
+      test: [ "CMD", "mongosh", "--quiet", "admin", "--eval", "quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)" ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
