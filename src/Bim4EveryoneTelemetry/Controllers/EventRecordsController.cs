@@ -3,20 +3,20 @@ using Bim4EveryoneTelemetry.Models.Events;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bim4EveryoneTelemetry.Controllers; 
+namespace Bim4EveryoneTelemetry.Controllers;
 
 /// <summary>
-/// Event records controller.
+///     Event records controller.
 /// </summary>
 [ApiController]
 [ApiVersion("2.0")]
 [Route("api/v{version:apiVersion}/events")]
 public class EventRecordsController : ControllerBase {
-    private readonly ILogger<EventRecordsController> _logger;
     private readonly IRepository<EventRecord> _eventRepository;
+    private readonly ILogger<EventRecordsController> _logger;
 
     /// <summary>
-    /// Creates script records controller.
+    ///     Creates script records controller.
     /// </summary>
     /// <param name="logger">Logger.</param>
     /// <param name="eventRepository">Event repository.</param>
@@ -26,7 +26,7 @@ public class EventRecordsController : ControllerBase {
     }
 
     /// <summary>
-    /// Adds event record to DB.
+    ///     Adds event record to DB.
     /// </summary>
     /// <param name="eventRecord">Adding event records.</param>
     /// <returns>Returns adding event records task.</returns>
