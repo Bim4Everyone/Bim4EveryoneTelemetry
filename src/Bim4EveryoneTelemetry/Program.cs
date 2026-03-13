@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
 
+using OpenTelemetry.Metrics;
+
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -71,6 +73,14 @@ builder.Services.AddVersionedApiExplorer(setup => {
     setup.SubstituteApiVersionInUrl = true;
 });
 
+// add prometheus metrics
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(metrics => {
+        metrics
+            .AddPrometheusExporter()
+            .AddAspNetCoreInstrumentation();
+    });
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -83,10 +93,13 @@ if(app.Environment.IsDevelopment()) {
     });
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapPrometheusScrapingEndpoint().DisableHttpMetrics();
 
 app.Run();

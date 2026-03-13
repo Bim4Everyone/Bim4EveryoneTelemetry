@@ -11,6 +11,7 @@ namespace Bim4EveryoneTelemetry.Controllers;
 /// </summary>
 [ApiController]
 [ApiVersion("2.0")]
+[DisableHttpMetrics]
 [Route("api/v{version:apiVersion}/status")]
 public class RouteStatusController : ControllerBase {
     private readonly IDBConnectionStatus _connectionStatus;
